@@ -1,8 +1,11 @@
+<!--门店洗车-车行列表-->
 <template>
     <div id="home" class="retailer-wash-panel">
 
         <header id="header" class="header">
-            <div class="back event-back"></div>
+            <span class="back event-back left">
+                <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
+            </span>
             <div class="search">
                 <search @on-submit="onSubmit"
                         :auto-fixed="false"
@@ -10,33 +13,102 @@
                         ref="search"></search>
             </div>
             <span class="right">
-                <i class="icon iconfont icon-zhizhen" style="font-size: 30px;"></i>
+                <i class="icon iconfont icon-dingwei1" style="font-size: 30px;"></i>
             </span>
         </header>
         <div class="propagation">
             <img src="../assets/retailer-propagation.png" width="100%" height="90">
         </div>
+        <flexbox class="retailer-order-panel">
+            <flexbox-item>
+                <div class="order">
+                    全市
+                    <i class="icon iconfont icon-down" style="font-size: 18px;"></i>
+                </div>
+            </flexbox-item>
+            <flexbox-item>
+                <div class="order main-color">
+                    距离排序
+                     <i class="icon iconfont icon-down" style="font-size: 18px;"></i>
+                </div>
+            </flexbox-item>
+        </flexbox>
+        <div class="retailer-list">
+            <div class="item" v-for="(item,index) in retailerList">
+                <div class="left">
+                    <img v-bind:src="item.url" height="96" width="96"/>
+                </div>
+
+                <div class="right">
+                    <h4 class="single-row">{{item.name}}</h4>
+                    <div style="height:26px;line-height: 26px;">
+                        <rater v-model="item.star" slot="value" disabled
+                               :font-size="22"
+                        >
+                        </rater>
+                        <span class="grey-color" style="font-size: 14px;">{{item.comment}}</span>
+                    </div>
+                    <div style="margin-top: 26px;font-size: 14px;position: relative;" class="grey-color">
+                        <div style="position:absolute;left:0;right: 70px;" class="single-row">
+                            <i class="icon iconfont icon-zhizhen" style="font-size: 18px;"></i>
+                            {{item.address}}
+
+                        </div>
+                        <div style="position: absolute;right:0;width: 120px;" class="text-right">{{item.distance}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <load-more :show-loading="false" :tip="'没有更多商家了'" background-color="#fbf9fe"></load-more>
+
     </div>
 </template>
 
 <script>
 
     import Lib from 'assets/js/Lib';
-    import {Search} from 'vux'
+    import {Search, Group, Panel, Flexbox, FlexboxItem, Rater, LoadMore} from 'vux'
 
     export default {
         data() {
             return {
-                results: []
+                results: [],
+                data3: 5,
+                retailerList: [
+                    {
+                        name: '西郊汽车服务连锁(光电园站)',
+                        url: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
+                        star: 5,
+                        address: '渝北区金开大道西段',
+                        distance: '离我300m',
+                        comment: '51人点评'
+                    },
+                    {
+                        name: '靓车洁汽车美容连锁机构（新南路店）',
+                        url: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
+                        star: 5,
+                        address: '渝北区新南路454号',
+                        distance: '离我300m',
+                        comment: '51人点评'
+                    },
+                    {
+                        name: '尚美汽车生活馆',
+                        url: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
+                        star: 5,
+                        address: '江北区金科十年城东区2号门7号附7',
+                        distance: '离我300m',
+                        comment: '51人点评'
+                    }
+
+                ]
             }
         },
         components: {
-            Search
+            Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore
         },
         mounted(){
-            debugger;
-            console.log(this.$refs.search);
-            var dom = this.$el.querySelector('.weui-search-bar__cancel-btn');
+            let dom = this.$el.querySelector('.weui-search-bar__cancel-btn');
             if (dom) {
                 dom.style.display = 'none';
             }
@@ -78,14 +150,66 @@
     }
 
     .retailer-wash-panel .header .search {
-        display: inline-block;
-        height: 30px !important;
-        line-height: 30px !important;
+        margin-left: 30px;
+        margin-right: 30px;
+        height: 25px !important;
+        line-height: 25px !important;
     }
 
     .propagation {
         margin-top: 48px;
         height: 90px;
+    }
+
+    .retailer-order-panel {
+        border-bottom: 1px solid #dddddd;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .retailer-order-panel .order {
+        text-align: center;
+    }
+
+    .retailer-list {
+        margin: 10px 15px;
+    }
+
+    .retailer-list .item {
+        border-bottom: 1px solid #dddddd;
+        padding-bottom: 5px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        margin: 8px auto;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        overflow-y: hidden;
+    }
+
+    .retailer-list .item:last-child {
+        border: none;
+    }
+
+    .retailer-list .item .left {
+        margin-right: .8em;
+        width: 96px;
+        height: 96px;
+        line-height: 96px;
+        text-align: center;
+    }
+    .retailer-list .item .right {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        min-width: 0;
+        height: 96px;
+    }
+    .retailer-list .item .right h4 {
+        font-weight: 500;
+        font-size: 18px;
     }
 
 </style>

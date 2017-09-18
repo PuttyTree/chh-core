@@ -12,26 +12,18 @@
             </span>
         </div>
         <div class="swiper">
-            <img src="./assets/banner.png" width="100%" height="160"/>
+            <img src="../assets/banner.png" width="100%" height="160"/>
         </div>
         <div style="background-color: white;">
-            <flexbox v-for="(row,index) in tools" :key="index">
+            <flexbox v-for="(row,index) in services" :key="index">
                 <flexbox-item v-for="(item,index) in row" :key="index">
                     <div class="services">
                         <img :src="item.url" width="48" height="48"/>
                         <br/>
                         {{item.alias}}
-
-
-
-
-
                     </div>
                 </flexbox-item>
-
             </flexbox>
-
-
         </div>
         <br>
         <div>
@@ -45,13 +37,14 @@
     import Lib from 'assets/js/Lib';
     import {Cell, Group, Divider, Flexbox, FlexboxItem, Panel} from 'vux'
 
-    import {TOOLS} from './config';
+    import {SERVICES} from './config';
+    let _ = require('lodash');
 
     export default {
         data() {
             return {
                 headerBackColor: 'transparent',
-                tools: TOOLS,
+                services: [],
                 list: [{
                     src: 'http://somedomain.somdomain/x.jpg',
                     fallbackSrc: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
@@ -80,6 +73,9 @@
         },
         components: {
             Cell, Group, Divider, Flexbox, FlexboxItem, Panel
+        },
+        created(){
+            this.services = _.chunk(SERVICES, 4);
         },
         //相关操作事件
         methods: {

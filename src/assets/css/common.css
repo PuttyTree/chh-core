@@ -3,7 +3,7 @@ body {
     color: #444;
     padding: 0;
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 @font-face {
@@ -550,13 +550,44 @@ input, textarea {
     height: 48px;
     line-height: 48px;
 }
+.header .middle{
+    position: absolute;
+}
 
 .header .right {
     position: absolute;
+    top: 0;
     right: 15px;
     height: 48px;
     line-height: 48px;
 }
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.vertical-middle {
+    vertical-align: middle;
+}
+.single-row{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.main-color{
+    color:#11bf79;
+}
+
+.grey-color {
+    color: #b2b2b2;
+}
+
+
 
 
 
