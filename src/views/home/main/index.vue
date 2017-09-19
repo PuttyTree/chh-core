@@ -142,7 +142,8 @@
 
     .services {
         text-align: center;
-        margin: 5px 0;
+        margin: 8px 0;
+        background-color: white;
     }
 
 

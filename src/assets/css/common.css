@@ -582,9 +582,16 @@ input, textarea {
 .main-color{
     color:#11bf79;
 }
+.main-background-color{
+    color:white;;
+    background-color: #11bf79;
+}
 
 .grey-color {
     color: #b2b2b2;
+}
+.default-margin{
+    margin: 5px 0;
 }
 
 

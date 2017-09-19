@@ -50,6 +50,40 @@
                 </flexbox-item>
             </flexbox>
 
+
+            <group style="border: none !important; ">
+                <cell :title="'用户点评'" :value="'查看全部51条评论'" style="padding: 10px 0 !important; font-size: 14px;"
+                      is-link></cell>
+                <div style="position: relative; font-size: 14px;margin-bottom: 10px;" v-for="(item,index) in comments"
+                     :key="index">
+                    <flexbox>
+                        <flexbox-item>
+
+                            <div class="text-left single-row">
+                                <span class="vertical-middle"> {{item.user}}</span>
+                                <img v-if="item.coupon" src="../assets/coupon1.png" class="vertical-middle"/>
+                            </div>
+
+                        </flexbox-item>
+                        <flexbox-item>
+                            <div class="text-right single-row">{{item.date}}</div>
+                        </flexbox-item>
+                    </flexbox>
+                    <div class="default-margin">
+                        <span>打分</span>
+                        <rater v-model="item.star" slot="value" disabled :font-size="18"></rater>
+                    </div>
+                    <div class="grey-color default-margin single-row">{{item.comment}}</div>
+                </div>
+            </group>
+
+            <div class="main-color text-center" style="margin: 20px auto;">发布评论</div>
+
+            <div class="main-background-color buy text-center">
+                <i class="icon iconfont icon-youhuiquan1" style="font-size: 25px;"></i>
+                特惠洗车买单
+            </div>
+
         </div>
 
     </div>
@@ -58,7 +92,10 @@
 <script>
 
     import Lib from 'assets/js/Lib';
-    import {Search, Group, Panel, Flexbox, FlexboxItem, Rater, LoadMore} from 'vux';
+    import {
+        Search, Group, Cell, Panel, Flexbox, FlexboxItem,
+        Rater, LoadMore, XButton
+    } from 'vux';
     import {SERVICES} from './config';
 
     let _ = require('lodash');
@@ -68,11 +105,26 @@
         data() {
             return {
                 star: 5,
-                services: []
+                services: [],
+                comments: [
+                    {
+                        user: '用户188****7018',
+                        date: '2017-09-08 12:00:00',
+                        coupon: true,
+                        star: 5,
+                        comment: '#洗的很干净# #靠谱# 还不错，下次有机会再来'
+                    }, {
+                        user: '用户188****7018',
+                        date: '2017-09-08 12:00:00',
+                        coupon: false,
+                        star: 4,
+                        comment: '#洗的很干净# #靠谱# 还不错，下次有机会再来,下次有机会再来,下次有机会再来'
+                    }
+                ]
             }
         },
         components: {
-            Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore
+            Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, Cell, XButton
         },
         mounted(){
             //二维数组
@@ -116,6 +168,12 @@
 
     .service {
         margin: 5px auto;
+    }
+
+    .buy {
+        border-radius: 5px;
+        height: 42px;
+        line-height: 42px;
     }
 
 
