@@ -3,7 +3,7 @@
     <div id="home" class="retailer-wash-panel">
 
         <header id="header" class="header">
-            <span class="back event-back left">
+            <span class="back event-back left" @click="back()">
                 <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
             </span>
             <div class="search">
@@ -34,7 +34,9 @@
             </flexbox-item>
         </flexbox>
         <div class="retailer-list">
-            <div class="item" v-for="(item,index) in retailerList">
+            <div class="item" v-for="(item,index) in retailerList"
+                 @click="onClickDetail(item)"
+            >
                 <div class="left">
                     <img v-bind:src="item.url" height="96" width="96"/>
                 </div>
@@ -52,6 +54,7 @@
                         <div style="position:absolute;left:0;right: 70px;" class="single-row">
                             <i class="icon iconfont icon-zhizhen" style="font-size: 18px;"></i>
                             {{item.address}}
+
 
                         </div>
                         <div style="position: absolute;right:0;width: 120px;" class="text-right">{{item.distance}}</div>
@@ -115,6 +118,24 @@
         },
         //相关操作事件
         methods: {
+            onClickDetail(item){
+                if (window.device != null) {
+                    api.openWin({
+                        name: 'retailer-detail',
+                        url: '../retailer-detail/index.html',
+                        pageParam: {
+                            name: 'test'
+                        }
+                    });
+                } else {
+                    window.open('../retailer-detail/index.html', '_blank');
+                }
+            },
+            back(){
+                if (window.device != null) {
+                    api.closeWin();
+                }
+            },
             setFocus () {
                 this.$refs.search.setFocus()
             },
@@ -200,6 +221,7 @@
         line-height: 96px;
         text-align: center;
     }
+
     .retailer-list .item .right {
         -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -207,6 +229,7 @@
         min-width: 0;
         height: 96px;
     }
+
     .retailer-list .item .right h4 {
         font-weight: 500;
         font-size: 18px;

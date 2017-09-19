@@ -543,6 +543,18 @@ input, textarea {
     width: 100%;
     font-size: 18px;
 }
+.footer{
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 18px;
+}
 
 .header .left {
     position: absolute;
@@ -550,7 +562,8 @@ input, textarea {
     height: 48px;
     line-height: 48px;
 }
-.header .middle{
+
+.header .middle {
     position: absolute;
 }
 
@@ -561,37 +574,48 @@ input, textarea {
     height: 48px;
     line-height: 48px;
 }
-.text-center{
+
+.text-center {
     text-align: center;
 }
-.text-left{
+
+.text-left {
     text-align: left;
 }
-.text-right{
+
+.text-right {
     text-align: right;
 }
+
 .vertical-middle {
     vertical-align: middle;
 }
-.single-row{
+
+.single-row {
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.main-color{
-    color:#11bf79;
+.main-color {
+    color: #11bf79;
 }
-.main-background-color{
-    color:white;;
-    background-color: #11bf79;
+
+.main-background-color {
+    color: white;;
+    background-color: #11bf79 !important;
 }
 
 .grey-color {
     color: #b2b2b2;
 }
-.default-margin{
+
+.default-margin {
     margin: 5px 0;
+}
+
+.basic-margin {
+    margin: auto 15px;
 }
 
 

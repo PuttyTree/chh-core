@@ -17,10 +17,10 @@
         <div style="background-color: white;">
             <flexbox v-for="(row,index) in services" :key="index">
                 <flexbox-item v-for="(item,index) in row" :key="index">
-                    <div class="services">
-                        <img :src="item.url" width="48" height="48"/>
+                    <div class="services" @click="openService(item)">
+                        <img :src="item.icon" width="48" height="48"/>
                         <br/>
-                        {{item.alias}}
+                        <span>{{item.alias}}</span>
                     </div>
                 </flexbox-item>
             </flexbox>
@@ -81,6 +81,23 @@
         methods: {
             onImgError (item, $event) {
                 console.log(item, $event)
+            },
+            openService(service){
+                if (_.isNil(service) || _.isNil(service.url)) {
+                    return;
+                }
+                if (window.device != null) {
+                    api.openWin({
+                        name: service.name,
+                        url: service.url,
+                        pageParam: {
+                            name: 'test'
+                        }
+                    });
+                } else {
+                    window.open(service.url, '_blank');
+                }
+
             },
             test(){
                 if (window.device != null) {

@@ -1,5 +1,5 @@
 <template>
-    <div id="retailer-detail">
+    <div id="door-wash">
         <router-view></router-view>
     </div>
 </template>
