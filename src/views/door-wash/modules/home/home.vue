@@ -35,7 +35,7 @@
                 <div class="subitem">18810291930</div>
             </div>
         </div>
-        <footer class="footer ">
+        <footer class="footer">
             <div class="basic-margin">
                 <x-button type="primary" class="main-background-color">确认预约</x-button>
             </div>
