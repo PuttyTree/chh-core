@@ -543,7 +543,8 @@ input, textarea {
     width: 100%;
     font-size: 18px;
 }
-.footer{
+
+.footer {
     height: 48px;
     line-height: 48px;
     text-align: center;
@@ -573,6 +574,11 @@ input, textarea {
     right: 15px;
     height: 48px;
     line-height: 48px;
+}
+
+.main-panel {
+    position: relative;
+    margin-top: 50px;
 }
 
 .text-center {
@@ -607,7 +613,7 @@ input, textarea {
 }
 
 .grey-color {
-    color: #b2b2b2;/*8a8a8a*/
+    color: #8a8a8a; /*8a8a8ab2b2b2*/
 }
 
 .default-margin {

@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 
 import Home from "../modules/home/home";
 import Login from '../modules/login/login';
+import Address from '../modules/address/address';
 
 const routes = [
     {
@@ -18,6 +19,11 @@ const routes = [
         path: '/login',
         name: 'login',
         component: Login
+    }
+    , {
+        path: '/address/:tag',
+        name: 'address',
+        component: Address
     }
 ];
 
