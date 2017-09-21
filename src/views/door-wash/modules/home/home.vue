@@ -14,18 +14,12 @@
             </div>
             <div class="item">
                 <div class="grey-color subitem">上门时间</div>
-                <div class="subitem">
-                    <flexbox>
-                        <flexbox-item :span="3/4" style="position: relative;">
-                            <div>天目山路128号2单元602,天目山路128号2单元602</div>
-                        </flexbox-item>
-                        <flexbox-item :span="1/4">
-                            <div class="text-right main-color">
-                                <i class="icon iconfont icon-dingwei" style="font-size: 20px;"></i>
-                                <span>重新定位</span>
-                            </div>
-                        </flexbox-item>
-                    </flexbox>
+                <div class="subitem clearfix">
+                    <div class="position text-right main-color">
+                        <i class="icon iconfont icon-dingwei" style="font-size: 20px;"></i>
+                        <span>重新定位</span>
+                    </div>
+                    <div class="address">天目山路128号2单元602,天目山路128号2单元602</div>
                 </div>
 
             </div>
@@ -104,6 +98,14 @@
     .popover-demo-content {
 
         padding: 5px 10px;
+    }
+    .position{
+        width: 95px;
+        float: right;
+    }
+    .address{
+        margin-right: 96px;
+
     }
 
 
