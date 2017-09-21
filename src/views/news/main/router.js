@@ -7,17 +7,12 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import Home from "../modules/home/home";
-import Login from '../modules/login/login';
 
 const routes = [
     {
         path: '/',
         name: 'home',
         component: Home
-    }, {
-        path: '/login',
-        name: 'login',
-        component: Login
     }
 ];
 

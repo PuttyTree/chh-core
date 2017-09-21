@@ -5,23 +5,27 @@
             <div class="portrait text-center">
                 <i class="icon iconfont icon-morentouxiang" style="font-size: 80px; background-color: #6bd7ab;"></i>
             </div>
-            <div class="badge">会员</div>
-            <div>
+            <div class="badge" v-if="isLogin">会员</div>
+            <div v-if="isLogin">
                 <span>188****2930</span>
                 <i class="icon iconfont icon-bianji" style="font-size: 20px;"></i>
+            </div>
+            <div v-else @click="loginOrRegister()">
+                登录/注册
+
             </div>
         </header>
         <div style="margin-top: 210px;">
             <flexbox>
                 <flexbox-item>
                     <div class="text-center" style="margin: 20px auto;">
-                        <i class="icon iconfont icon-quan" style="color: #f696a5;font-size: 35px;"></i>
+                        <i class="icon iconfont icon-coupon" style="color: #f696a5;font-size: 30px;"></i>
                         <span style="font-size: 18px;">购物券</span>
                     </div>
                 </flexbox-item>
                 <flexbox-item>
                     <div class="text-center" style="margin: 20px auto;">
-                        <i class="icon iconfont icon-daijinquan" style="color: #fbc469;font-size: 25px;"></i>
+                        <i class="icon iconfont icon-daijinquan" style="color: #fbc469;font-size: 30px;"></i>
                         <span style="font-size: 18px;">代金券</span>
                     </div>
                 </flexbox-item>
@@ -83,7 +87,9 @@
 
     export default {
         data() {
-            return {}
+            return {
+                isLogin: false
+            }
         },
         components: {
             Badge, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, XButton, Cell
@@ -97,6 +103,9 @@
                 if (window.device != null) {
                     api.closeWin();
                 }
+            },
+            loginOrRegister(){
+                this.$router.push({name:'login'});
             }
         }
     }

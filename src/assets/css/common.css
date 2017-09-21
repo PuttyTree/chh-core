@@ -598,7 +598,7 @@ input, textarea {
 }
 
 .main-color {
-    color: #11bf79;
+    color: #11bf79 !important;
 }
 
 .main-background-color {
