@@ -6,15 +6,23 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import Home from "../modules/home/home";
 import Login from '../modules/login/login';
 import Address from '../modules/address/address';
+import MyCar from '../modules/my-car/my-car';
 
 const routes = [
     {
-        path: '/',
-        name: 'home',
-        component: Home
+        path: '/login',
+        name: 'login',
+        component: Login
+    }, {
+        path: '/address/:tag',
+        name: 'address',
+        component: Address
+    }, {
+        path: '/mycar/',
+        name: 'mycar',
+        component: MyCar
     }
 ];
 

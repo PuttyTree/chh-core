@@ -71,13 +71,14 @@
     }
 
     .news-panel .main {
-        margin-top: 48px;
+        margin-top: 50px;
         padding-top: 2px;
     }
 
     .news {
         height: 120px;
-        margin: 5px 0;
+        margin: 10px 0;
+        background-color: white;
     }
 
     .news .snapshot {

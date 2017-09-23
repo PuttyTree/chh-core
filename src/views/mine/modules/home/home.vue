@@ -1,4 +1,4 @@
-<!--上门洗车-->
+<!--我的主页-->
 <template>
     <div class="mine-panel basic-margin">
         <header id="header" class="header main-background-color" style="height: 210px !important;">

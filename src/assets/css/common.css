@@ -542,6 +542,7 @@ input, textarea {
     top: 0;
     width: 100%;
     font-size: 18px;
+    background-color: white;
 }
 
 .footer {
@@ -622,6 +623,13 @@ input, textarea {
 
 .basic-margin {
     margin: auto 15px;
+}
+.basic-padding{
+    padding: 0 15px;
+}
+
+.panel-bottom {
+    border-bottom: 1px solid #D9D9D9;
 }
 
 
