@@ -13,3 +13,7 @@ dist/
 
 #node_modules
 node_modules/
+
+#node files
+npm-debug.log
+yarn-error.log
