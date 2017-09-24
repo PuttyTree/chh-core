@@ -7,19 +7,18 @@
             <span>车汇惠</span>
 
         </header>
-        <div class=" basic-margin main">
-
-            <group ref="group1">
+        <div class="main" >
+            <group ref="group1" class="basic-padding " style="background-color: white;">
                 <x-input title="手机号码" name="mobile" placeholder="请输入手机号码" keyboard="number"
                          is-type="china-mobile"></x-input>
-                <x-input title="密码" class="weui-vcode" placeholder="请输入验证码" ref="verify"
-                         style="border: none !important;">
-                    <span slot="right" class="verify-code main-color">获取动态密码</span>
+                <x-input title="密码" class="weui-vcode" placeholder="请输入验证码" ref="verify">
+                    <span slot="right" class="verify-code main-color text-right" style="margin-right: -15px;">获取动态密码</span>
                 </x-input>
-
             </group>
             <br>
-            <x-button type="primary" class="main-background-color">开始使用</x-button>
+            <div class="basic-margin">
+                <x-button type="primary" class="main-background-color basic-margin">开始使用</x-button>
+            </div>
             <br>
             <div class="text-center" style="font-size: 14px;">
                 <span class="grey-color">开始使用即表示同意</span>
@@ -54,14 +53,14 @@
 <script>
     import Lib from 'assets/js/Lib';
     import {
-        Tab, TabItem, Group, Cell,
+        Group, Cell,
         Flexbox, FlexboxItem,
         XInput, LoadMore, XButton
     } from 'vux'
 
     export default {
         components: {
-            Tab, TabItem, Group, Cell, Flexbox, FlexboxItem,
+            Group, Cell, Flexbox, FlexboxItem,
             XInput, LoadMore, XButton
         },
         data () {
@@ -70,8 +69,6 @@
             }
         },
         mounted(){
-
-
             let dom = this.$refs.verify.$el.querySelector('.weui-label');
             if (dom) {
                 dom.style['width'] = '5em';
@@ -84,7 +81,12 @@
         },
         methods: {
             back(){
-                this.$router.push({path: '/'});
+                if(window.device){
+                    api.closeWin();
+                }else{
+                    this.$router.push({path: '/'});
+                }
+
             },
             onBlur (val) {
                 console.log('on blur', val)

@@ -15,9 +15,10 @@ export var SERVICES = [
         url: '../door-wash/index.html'
     },
     {
-        name: '',
+        name: 'rescue',
         alias: '道路救援',
-        icon: '../../static/img/home/road-rescue.png'
+        icon: '../../static/img/home/road-rescue.png',
+        url: '../rescue/index.html'
     },
     {
         name: '',
@@ -30,9 +31,10 @@ export var SERVICES = [
         icon: '../../static/img/home/auto-insurance.png'
     },
     {
-        name: '',
+        name: 'violation',
         alias: '违章查询',
-        icon: '../../static/img/home/peccancy-accquire.png'
+        icon: '../../static/img/home/peccancy-accquire.png',
+        url: '../violation-record/index.html'
     },
     {
         name: '',

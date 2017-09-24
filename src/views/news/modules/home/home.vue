@@ -1,20 +1,24 @@
 <!--咨询主页-->
 <template>
-    <div class="news-panel basic-margin">
-        <header id="header" class="header" style="border-bottom: 1px solid #dddddd">
+    <div class="news-panel">
+        <header id="header" class="header panel-bottom">
             <span>咨询</span>
         </header>
         <div class="main">
-            <div v-for="(news,index) in newsList" :key="index" class="news clearfix">
-                <div class="snapshot vertical-middle">
-                    <img v-bind:src="news.img" height="100%" width="120" class="vertical-middle">
-                </div>
-                <div class="title ">
-                    <h4>{{news.title}}</h4>
-                    <div class="date-time grey-color">
-                        {{news.origin}} &nbsp; &nbsp; {{news.date}}
+            <div v-for="(news,index) in newsList" :key="index" class="basic-padding " style="background-color: white;">
+                <div class="news  clearfix">
+                    <div class="snapshot vertical-middle">
+                        <img v-bind:src="news.img" height="100" width="120" class="vertical-middle">
+                    </div>
+                    <div class="title ">
+                        <h4>{{news.title}}</h4>
+                        <div class="date-time grey-color">
+                            {{news.origin}} &nbsp; &nbsp; {{news.date}}
+
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -76,8 +80,9 @@
     }
 
     .news {
-        height: 120px;
+        height: 100px;
         margin: 10px 0;
+        padding: 8px 0;
         background-color: white;
     }
 
@@ -89,8 +94,9 @@
     }
 
     .news .title {
-        margin-left: 100px;
+
         padding-left: 10px;
+        margin-left: 105px;
         height: 100%;
         overflow: hidden;
         position: relative;

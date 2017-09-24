@@ -16,14 +16,14 @@
 
 <script>
     import {
-        Tab, TabItem, Group, Cell,
+        Group, Cell,
         Flexbox, FlexboxItem,
         XInput, LoadMore, XButton
     } from 'vux'
 
     export default {
         components: {
-            Tab, TabItem, Group, Cell, Flexbox, FlexboxItem,
+            Group, Cell, Flexbox, FlexboxItem,
             XInput, LoadMore, XButton
         },
         data () {

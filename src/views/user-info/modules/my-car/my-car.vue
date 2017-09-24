@@ -1,3 +1,4 @@
+<!--我的爱车-->
 <template>
     <div class="my-car-panel">
         <header id="header" class="header panel-bottom">
@@ -45,21 +46,19 @@
                 demo1: false,
                 list: [{
                     region: '浙A KS129',
-                    desc: '起亚KS',
+                    brand: '起亚KS',
                     img: '../../static/img/user-info/my-car-avatar.png',
                     defaulted: true
 
                 }, {
                     region: '浙A KS129',
-                    desc: '起亚KS',
+                    brand: '起亚KS',
                     img: '../../static/img/user-info/my-car-avatar.png',
                     defaulted: false
                 }]
             }
         },
-        components: {
-            XButton, Panel, CheckIcon
-        },
+        components: {XButton, Panel, CheckIcon},
         methods: {
             back(){
 

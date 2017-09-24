@@ -12,9 +12,11 @@
 
             </span>
         </header>
+        <div>
+            <img src="../../assets/exhibition.jpg" width="100%" height="200"/>
+        </div>
 
-        <img src="../../assets/exhibition.jpg" width="100%" height="200"/>
-        <div class="basic-service">
+        <div class="basic-padding basic-service" style="background-color: white;">
             <h3 style="font-weight: 500;">靓车洁汽车美容连锁机构（新南路店）</h3>
             <div style="margin: 5px 0;">
                 <rater v-model="star" slot="value" disabled :font-size="22"></rater>
@@ -34,57 +36,58 @@
                     </flexbox-item>
                 </flexbox>
             </div>
-
-            <flexbox style="margin-top: 25px;">
-                <flexbox-item>
-                    <div class="order text-center  main-color">
-                        <i class="icon iconfont icon-dianhua  vertical-middle" style="font-size: 18px;"></i>
-                        <span>电话</span>
-                    </div>
-                </flexbox-item>
-                <flexbox-item>
-                    <div class="order text-center  main-color">
-                        <i class="icon iconfont icon-dingwei1 vertical-middle" style="font-size: 24px;"></i>
-                        <span>地图</span>
-                    </div>
-                </flexbox-item>
-            </flexbox>
+        </div>
 
 
-            <group style="border: none !important; ">
-                <cell :title="'用户点评'" :value="'查看全部51条评论'" style="padding: 10px 0 !important; font-size: 14px;"
-                      is-link :link="{path:'/comment'}"></cell>
-                <div style="position: relative; font-size: 14px;margin-bottom: 10px;" v-for="(item,index) in comments"
-                     :key="index">
-                    <flexbox>
-                        <flexbox-item>
-
-                            <div class="text-left single-row">
-                                <span class="vertical-middle"> {{item.user}}</span>
-                                <img v-if="item.coupon" src="../../assets/coupon1.png" class="vertical-middle"/>
-                            </div>
-
-                        </flexbox-item>
-                        <flexbox-item>
-                            <div class="text-right single-row">{{item.date}}</div>
-                        </flexbox-item>
-                    </flexbox>
-                    <div class="default-margin">
-                        <span>打分</span>
-                        <rater v-model="item.star" slot="value" disabled :font-size="18"></rater>
-                    </div>
-                    <div class="grey-color default-margin single-row">{{item.comment}}</div>
+        <flexbox style="background-color: white;">
+            <flexbox-item style="background-color: white;">
+                <div class="order text-center  main-color">
+                    <i class="icon iconfont icon-dianhua  vertical-middle" style="font-size: 18px;"></i>
+                    <span>电话</span>
                 </div>
-            </group>
+            </flexbox-item>
+            <flexbox-item style="background-color: white;">
+                <div class="order text-center  main-color">
+                    <i class="icon iconfont icon-dingwei1 vertical-middle" style="font-size: 24px;"></i>
+                    <span>地图</span>
+                </div>
+            </flexbox-item>
+        </flexbox>
+        <group style="border: none !important;background-color: white; margin-top: -10px !important;" ref="group"
+               class="basic-padding">
+            <cell :title="'用户点评'" :value="'查看全部51条评论'" style="padding: 15px 0 !important; font-size: 14px;"
+                  is-link :link="{path:'/comment'}"></cell>
+            <div style="position: relative; font-size: 14px;margin-bottom: 10px;" v-for="(item,index) in comments"
+                 :key="index">
+                <flexbox>
+                    <flexbox-item>
+                        <div class="text-left single-row">
+                            <span class="vertical-middle"> {{item.user}}</span>
+                            <img v-if="item.coupon" src="../../assets/coupon1.png" class="vertical-middle"/>
+                        </div>
 
-            <div class="main-color text-center" style="margin: 20px auto;">发布评论</div>
+                    </flexbox-item>
+                    <flexbox-item>
+                        <div class="text-right single-row">{{item.date}}</div>
+                    </flexbox-item>
+                </flexbox>
+                <div class="default-margin">
+                    <span>打分</span>
+                    <rater v-model="item.star" slot="value" disabled :font-size="18"></rater>
+                </div>
+                <div class="grey-color default-margin single-row">{{item.comment}}</div>
+            </div>
+        </group>
 
-            <div class="main-background-color buy text-center">
+        <div class="main-color text-center" style="margin: 20px auto 70px;">发布评论</div>
+
+        <footer class="footer">
+            <div class="main-background-color buy text-center basic-margin">
                 <i class="icon iconfont icon-youhuiquan1" style="font-size: 25px;"></i>
                 <span>特惠洗车买单</span>
             </div>
+        </footer>
 
-        </div>
 
     </div>
 </template>
@@ -127,6 +130,10 @@
             Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, Cell, XButton
         },
         mounted(){
+            let dom = this.$refs.group.$el.querySelector('.weui-cells');
+            if (dom) {
+                dom.style['margin-top'] = '0 !important';
+            }
             //二维数组
             this.services = _.chunk(SERVICES, 4);
             //补齐二维数组的最后一个长度为4
@@ -161,15 +168,18 @@
 </script>
 
 <style scoped lang="less">
-    @import '~vux/src/styles/1px.less';
-
     .header-ex {
         color: white;
         background-color: transparent;
     }
 
     .basic-service {
-        margin: 10px 15px;
+        margin: 10px 0;
+    }
+
+    .order {
+        height: 40px;
+        line-height: 40px;
     }
 
     .service {

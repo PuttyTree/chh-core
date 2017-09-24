@@ -1,18 +1,18 @@
 <!--上门洗车-->
 <template>
-    <div class="door-wash-panel basic-margin">
-        <header id="header" class="header header-ex">
+    <div class="door-wash-panel">
+        <header id="header" class="header panel-bottom" style="background-color: white;">
             <span class="back event-back left" @click="back()">
                 <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
             </span>
             <span>上门洗车</span>
         </header>
-        <div class="main-section">
-            <div class="item">
+        <div class="main basic-padding" style="background-color: white;">
+            <div class="item panel-bottom">
                 <div class="grey-color subitem">上门时间</div>
                 <div class="subitem">今天12:00</div>
             </div>
-            <div class="item">
+            <div class="item panel-bottom">
                 <div class="grey-color subitem">上门时间</div>
                 <div class="subitem clearfix">
                     <div class="position text-right main-color">
@@ -74,24 +74,19 @@
     .door-wash-panel {
         position: relative;
     }
-
-    .header-ex {
-        border-bottom: 1px solid rgba(178, 178, 178, 0.5);
+    .door-wash-panel .main {
+        margin: 58px 0;
     }
 
-    .main-section {
-        margin: 48px auto;
+    .door-wash-panel .main .item {
+       padding: 10px 0;
     }
 
-    .main-section .item {
-        margin: 25px 0;
+    .main .item:first-child {
+        margin-top: 10px;
     }
 
-    .main-section .item:first-child {
-        margin-top: 68px;
-    }
-
-    .main-section .item .subitem {
+    .main .item .subitem {
         margin: 10px 0;
     }
 
@@ -99,11 +94,13 @@
 
         padding: 5px 10px;
     }
-    .position{
+
+    .subitem .position {
         width: 95px;
         float: right;
     }
-    .address{
+
+    .address {
         margin-right: 96px;
 
     }

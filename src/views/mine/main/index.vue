@@ -1,5 +1,5 @@
 <template>
-    <div id="mine" class="mine-panel basic-margin">
+    <div id="mine" class="mine-panel ">
         <header id="header" class="header main-background-color" style="height: 210px !important;">
             <div class="portrait text-center">
                 <i class="icon iconfont icon-morentouxiang" style="font-size: 80px; background-color: #6bd7ab;"></i>
@@ -12,7 +12,7 @@
             <div v-else @click="loginOrRegister()">登录/注册</div>
         </header>
         <div style="margin-top: 210px;">
-            <flexbox>
+            <flexbox style="background-color: white;">
                 <flexbox-item>
                     <div class="text-center" style="margin: 20px auto;">
                         <i class="icon iconfont icon-coupon" style="color: #f696a5;font-size: 30px;"></i>
@@ -26,47 +26,21 @@
                     </div>
                 </flexbox-item>
             </flexbox>
-            <group>
-                <cell is-link>
-                    <span slot="title">
-                        <i class="icon iconfont icon-xiaofeijilu" style="font-size: 20px;color:grey;"></i>
-                        <span>我的消费记录</span>
-                    </span>
-                </cell>
-                <cell is-link>
-                    <span slot="title">
-                        <i class="icon iconfont icon-che" style="font-size: 20px;color:grey;"></i>
-                        <span>我的爱车</span>
-                    </span>
-                </cell>
-                <cell is-link>
-                    <span slot="title">
-                        <i class="icon iconfont icon-youjiguanli" style="font-size: 20px;color:grey;"></i>
-                        <span>我的邮寄地址</span>
-                    </span>
-                </cell>
-                <cell is-link>
-                    <span slot="title">
-                        <i class="icon iconfont icon-huiyuan" style="font-size: 20px;color:grey;"></i>
-                        <span>我的会员</span>
-                    </span>
-                    <span slot="value">
-                        <badge text="成为会员"></badge>
-                    </span>
+            <group ref="group">
+                <template v-for="item  in settings">
+                    <cell is-link v-on:click.native="onCellClick($event,item)">
+                      <span slot="title">
+                          <i class="icon iconfont"
+                             v-bind:class="item.icon"
+                             style="font-size: 20px;color:grey;"></i>
+                          <span>{{item.title}}</span>
+                      </span>
+                        <span v-if='item.slot' slot="value">
+                          <badge v-if="item.slot.type === 'badge'" :text="item.slot.text"></badge>
 
-                </cell>
-                <cell is-link>
-                    <span slot="title">
-                        <i class="icon iconfont icon-tuijian" style="font-size: 20px;color:grey;"></i>
-                        <span>推荐车汇惠</span>
-                    </span>
-                </cell>
-                <cell is-link>
-                    <span slot="title">
-                        <i class="icon iconfont icon-artboard7" style="font-size: 20px;color:grey;"></i>
-                        <span>设置</span>
-                    </span>
-                </cell>
+                      </span>
+                    </cell>
+                </template>
             </group>
         </div>
     </div>
@@ -74,6 +48,8 @@
 
 <script>
     import Lib from 'assets/js/Lib';
+    import {SETTINGS} from './config';
+    let _ = require('lodash');
     import {
         Badge, Group, Panel, Flexbox, FlexboxItem,
         Rater, LoadMore, XButton, Cell
@@ -82,14 +58,14 @@
         name: 'app',
         data() {
             return {
-                isLogin: false
+                isLogin: false,
+                settings: SETTINGS
             }
         },
         components: {
             Badge, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, XButton, Cell
         },
         mounted(){
-
         },
         //相关操作事件
         methods: {
@@ -98,19 +74,40 @@
                     api.closeWin();
                 }
             },
-            loginOrRegister(){
-                // this.$router.push({name:'login'});
-                if (window.device != null) {
+            onCellClick($event, item){
+                if (_.isNil(item.link)) {
+                    return;
+                }
+                let substract = Math.abs(window.innerWidth - $event.clientX);
+                if (substract > 30) {
+                    return;
+                }
+                if (window.device) {
                     api.openWin({
-                            name: 'user-info',
-                            url: '../user-info/index.html#/login',
+                            name: item.name,
+                            url: item.link,
                             pageParam: {
                                 name: 'test11'
                             }
                         }
                     );
                 } else {
-                    window.open('../user-info/index.html#/login', '_blank');
+                    window.open(item.link, '_blank');
+                }
+
+            },
+            loginOrRegister(){
+                if (window.device != null) {
+                    api.openWin({
+                            name: 'user-info',
+                            url: '../user-info/index.html',
+                            pageParam: {
+                                name: 'test11'
+                            }
+                        }
+                    );
+                } else {
+                    window.open('../user-info/index.html', '_blank');
                 }
             }
         }

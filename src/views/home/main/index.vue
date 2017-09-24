@@ -1,6 +1,6 @@
 <template>
     <div id="home" class="home-panel">
-        <div id="home-header" class="home-header">
+        <div id="home-header" class="home-header" v-bind:style="{backgroundColor:headerBackColor, color: headerColor}">
             <span class="position">
                 <i class="icon iconfont icon-zhizhen" style="font-size: 30px;"></i>
                 重庆
@@ -12,7 +12,7 @@
             </span>
         </div>
         <div class="swiper">
-            <img src="../assets/banner.png" width="100%" height="160"/>
+            <swiper loop auto height='160px' :list="demo01_list" v-model="demo01_index"></swiper>
         </div>
         <div style="background-color: white;">
             <flexbox v-for="(row,index) in services" :key="index">
@@ -35,28 +35,47 @@
 <script>
 
     import Lib from 'assets/js/Lib';
-    import {Cell, Group, Divider, Flexbox, FlexboxItem, Panel} from 'vux'
+    import {Cell, Group, Divider, Flexbox, FlexboxItem, Panel, Swiper} from 'vux'
 
     import {SERVICES} from './config';
     let _ = require('lodash');
+
+    const baseList = [{
+        url: 'javascript:',
+        img: 'https://static.vux.li/demo/1.jpg',
+        title: '送你一朵fua'
+    }, {
+        url: 'javascript:',
+        img: 'https://static.vux.li/demo/2.jpg',
+        title: '送你一辆车'
+    }, {
+        url: 'javascript:',
+        img: 'https://static.vux.li/demo/5.jpg',
+        title: '送你一次旅行',
+        fallbackImg: 'https://static.vux.li/demo/3.jpg'
+    }];
+
 
     export default {
         data() {
             return {
                 headerBackColor: 'transparent',
+                headerColor: 'white',
+                demo01_list: baseList,
+                demo01_index: 0,
                 services: [],
                 list: [{
                     src: 'http://somedomain.somdomain/x.jpg',
                     fallbackSrc: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
                     title: '环保税倒计时：40年排污收费制将终结',
                     desc: '新浪网 2017-09-10 13:00:29',
-                    url: '/component/cell'
+                    url: 'http://www.baidu.com'
                 }, {
                     src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
                     title: '环保税倒计时：40年排污收费制将终结',
                     desc: '新浪网 2017-09-10 13:00:29',
                     url: {
-                        path: '/component/radio',
+                        path: 'http://www.baidu.com',
                         replace: false
                     },
                     meta: {
@@ -67,20 +86,27 @@
                 }],
                 footer: {
                     title: '查看更多',
-                    url: 'http://vux.li'
+                    url: 'http://www.baidu.com'
                 }
             }
         },
         components: {
-            Cell, Group, Divider, Flexbox, FlexboxItem, Panel
+            Cell, Group, Divider, Flexbox, FlexboxItem, Panel, Swiper
         },
         created(){
             this.services = _.chunk(SERVICES, 4);
         },
+        mounted(){
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        beforeDestroy(){
+            window.removeEventListener('scroll', this.handleScroll);
+        },
         //相关操作事件
         methods: {
-            onImgError (item, $event) {
-                console.log(item, $event)
+            handleScroll () {
+                let scrollY = window.scrollY;
+
             },
             openService(service){
                 if (_.isNil(service) || _.isNil(service.url)) {
@@ -153,7 +179,7 @@
     }
 
     .home-panel .swiper {
-        margin-top: 48px;
+        margin-top: 0;
         height: 160px;
     }
 

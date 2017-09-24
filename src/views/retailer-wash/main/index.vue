@@ -2,8 +2,8 @@
 <template>
     <div id="home" class="retailer-wash-panel">
 
-        <header id="header" class="header">
-            <span class="back event-back left" @click="back()">
+        <header id="header" class="header" style="background-color: white;">
+            <span class="back left" style="margin-top: -5px;" @click="back()">
                 <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
             </span>
             <div class="search">
@@ -12,14 +12,14 @@
                         placeholder="输入车行名"
                         ref="search"></search>
             </div>
-            <span class="right">
+            <span class="right" style="margin-top: -5px;">
                 <i class="icon iconfont icon-dingwei1" style="font-size: 30px;"></i>
             </span>
         </header>
         <div class="propagation">
-            <img src="../assets/retailer-propagation.png" width="100%" height="90">
+            <img src="../assets/retailer-propagation1.png" width="100%" height="90">
         </div>
-        <flexbox class="retailer-order-panel">
+        <flexbox class="retailer-order-panel" style="margin-top: 10px;background-color: white;">
             <flexbox-item>
                 <div class="order">
                     全市
@@ -33,7 +33,7 @@
                 </div>
             </flexbox-item>
         </flexbox>
-        <div class="retailer-list">
+        <div class="retailer-list basic-padding">
             <div class="item" v-for="(item,index) in retailerList"
                  @click="onClickDetail(item)"
             >
@@ -53,9 +53,7 @@
                     <div style="margin-top: 26px;font-size: 14px;position: relative;" class="grey-color">
                         <div style="position:absolute;left:0;right: 70px;" class="single-row">
                             <i class="icon iconfont icon-zhizhen" style="font-size: 18px;"></i>
-                            {{item.address}}
-
-
+                            <span>{{item.address}}</span>
                         </div>
                         <div style="position: absolute;right:0;width: 120px;" class="text-right">{{item.distance}}</div>
                     </div>
@@ -111,10 +109,17 @@
             Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore
         },
         mounted(){
-            let dom = this.$el.querySelector('.weui-search-bar__cancel-btn');
-            if (dom) {
-                dom.style.display = 'none';
+            //去掉“取消”按钮
+            let cancelBtn = this.$refs.search.$el.querySelector('.weui-search-bar__cancel-btn');
+            if (cancelBtn) {
+                cancelBtn.style['display'] = 'none';
             }
+            //隐藏背景
+            let bar = this.$refs.search.$el.querySelector('.weui-search-bar');
+            if (bar) {
+                bar.style['background-color'] = 'transparent';
+            }
+
         },
         //相关操作事件
         methods: {
@@ -171,14 +176,19 @@
     }
 
     .retailer-wash-panel .header .search {
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: 50px;
+        margin-right: 50px;
         height: 25px !important;
         line-height: 25px !important;
+        background-color: white;
+    }
+
+    .weui-search-bar-ex {
+        background-color: transparent !important;
     }
 
     .propagation {
-        margin-top: 48px;
+        margin-top: 58px;
         height: 90px;
     }
 
@@ -193,17 +203,18 @@
     }
 
     .retailer-list {
-        margin: 10px 15px;
+        /* margin: 10px 15px;*/
+        background-color: white;
     }
 
     .retailer-list .item {
         border-bottom: 1px solid #dddddd;
-        padding-bottom: 5px;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
         margin: 8px auto;
+        padding: 8px 0;
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;

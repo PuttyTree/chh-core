@@ -9,8 +9,15 @@ Vue.use(VueRouter);
 import Login from '../modules/login/login';
 import Address from '../modules/address/address';
 import MyCar from '../modules/my-car/my-car';
+import Consumption from '../modules/consumption/consumption';
+import MyAddress from '../modules/my-address/my-address';
 
 const routes = [
+    {
+        path: '',
+        name: 'home',
+        component: Login
+    }/*,
     {
         path: '/login',
         name: 'login',
@@ -23,7 +30,16 @@ const routes = [
         path: '/mycar/',
         name: 'mycar',
         component: MyCar
-    }
+    }, {
+        path: '/consumption',
+        name: 'consumption',
+        component: Consumption
+    }, {
+        path: '/myaddress',
+        name: 'myaddress',
+        component: MyAddress
+
+    }*/
 ];
 
 const router = new VueRouter({
