@@ -7,17 +7,18 @@
             <span>车汇惠</span>
 
         </header>
-        <div class="main" >
+        <div class="main">
             <group ref="group1" class="basic-padding " style="background-color: white;">
                 <x-input title="手机号码" name="mobile" placeholder="请输入手机号码" keyboard="number"
                          is-type="china-mobile"></x-input>
                 <x-input title="密码" class="weui-vcode" placeholder="请输入验证码" ref="verify">
-                    <span slot="right" class="verify-code main-color text-right" style="margin-right: -15px;">获取动态密码</span>
+                    <span slot="right" class="verify-code main-color text-right"
+                          style="margin-right: -15px;">获取动态密码</span>
                 </x-input>
             </group>
             <br>
             <div class="basic-margin">
-                <x-button type="primary" class="main-background-color basic-margin">开始使用</x-button>
+                <x-button type="primary" class="main-background-color">开始使用</x-button>
             </div>
             <br>
             <div class="text-center" style="font-size: 14px;">
@@ -73,6 +74,7 @@
             if (dom) {
                 dom.style['width'] = '5em';
             }
+            debugger
             let group = this.$refs.group1.$el.querySelector('.weui-cells');
             if (group) {
                 let className = group.getAttribute('class');
@@ -81,9 +83,9 @@
         },
         methods: {
             back(){
-                if(window.device){
+                if (window.device) {
                     api.closeWin();
-                }else{
+                } else {
                     this.$router.push({path: '/'});
                 }
 
@@ -96,7 +98,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
     .login-panel .main {
         margin-top: 58px;
     }
@@ -107,16 +109,26 @@
         font-size: 15px;
     }
 
-    .weui-cells-ex {
-
-    }
-
-    .weui-cells-ex::before {
+    .weui-cells:before {
         border-top: none !important;
         border-bottom: none !important;
     }
 
-    .weui-cells-ex::after {
+    .weui-cells:after {
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+    .weui-cells-ex {
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+
+    .weui-cells-ex:before {
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+
+    .weui-cells-ex:after {
         border-top: none !important;
         border-bottom: none !important;
     }

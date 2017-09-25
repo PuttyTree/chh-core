@@ -618,14 +618,15 @@ input, textarea {
 }
 
 .default-margin {
-    margin: 5px 0;
+    margin: 5px 0 !important;
 }
 
 .basic-margin {
-    margin: auto 15px;
+    margin: auto 15px !important;
 }
-.basic-padding{
-    padding: 0 15px;
+
+.basic-padding {
+    padding: 0 15px !important;
 }
 
 .panel-bottom {

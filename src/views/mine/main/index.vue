@@ -13,35 +13,45 @@
         </header>
         <div style="margin-top: 210px;">
             <flexbox style="background-color: white;">
-                <flexbox-item>
-                    <div class="text-center" style="margin: 20px auto;">
+                <flexbox-item style="background-color: white;">
+                    <div class="text-center" style="margin: 20px auto;background-color: white;">
                         <i class="icon iconfont icon-coupon" style="color: #f696a5;font-size: 30px;"></i>
                         <span style="font-size: 18px;">购物券</span>
                     </div>
                 </flexbox-item>
-                <flexbox-item>
-                    <div class="text-center" style="margin: 20px auto;">
+                <flexbox-item style="background-color: white;">
+                    <div class="text-center" style="margin: 20px auto;background-color: white;">
                         <i class="icon iconfont icon-daijinquan" style="color: #fbc469;font-size: 30px;"></i>
                         <span style="font-size: 18px;">代金券</span>
                     </div>
                 </flexbox-item>
             </flexbox>
-            <group ref="group">
-                <template v-for="item  in settings">
-                    <cell is-link v-on:click.native="onCellClick($event,item)">
-                      <span slot="title">
-                          <i class="icon iconfont"
-                             v-bind:class="item.icon"
-                             style="font-size: 20px;color:grey;"></i>
-                          <span>{{item.title}}</span>
-                      </span>
-                        <span v-if='item.slot' slot="value">
-                          <badge v-if="item.slot.type === 'badge'" :text="item.slot.text"></badge>
+            <div class="basic-padding portfolio">
+                <flexbox v-for="(item,index) in settings" :key="index"
+                         class="default-margin item"
+                >
+                    <flexbox-item>
+                        <div class="text-left" style="background-color: white;">
+                            <i class="icon iconfont" v-bind:class="item.icon" style="font-size: 20px;"></i>
+                            <span style="font-size: 18px;" class="vertical-middle">{{item.title}}</span>
+                        </div>
+                    </flexbox-item>
+                    <flexbox-item>
+                        <div class="text-right " style="position: relative;" @click="onCellClick(item)">
+                            <span style="position:absolute;top:0;right:28px;height: 30px;line-height:30px;"
+                                  v-if='item.slot'>
+                                <badge v-if="item.slot.type === 'badge'" :text="item.slot.text"
+                                       class="vertical-middle"></badge>
+                            </span>
+                            <span >
+                                <x-icon type="ios-arrow-forward" size="30"></x-icon>
+                            </span>
 
-                      </span>
-                    </cell>
-                </template>
-            </group>
+                        </div>
+                    </flexbox-item>
+                </flexbox>
+            </div>
+
         </div>
     </div>
 </template>
@@ -74,14 +84,15 @@
                     api.closeWin();
                 }
             },
-            onCellClick($event, item){
+            onCellClick(item){
+                debugger
                 if (_.isNil(item.link)) {
                     return;
                 }
-                let substract = Math.abs(window.innerWidth - $event.clientX);
-                if (substract > 30) {
-                    return;
-                }
+                /*    let substract = Math.abs(window.innerWidth - $event.clientX);
+                 if (substract > 30) {
+                 return;
+                 }*/
                 if (window.device) {
                     api.openWin({
                             name: item.name,
@@ -117,6 +128,10 @@
 <style scoped lang="less">
     @import '~vux/src/styles/reset.less';
 
+    .vux-x-icon {
+        fill: #D9D9D9;
+    }
+
     .mine-panel {
         position: relative;
     }
@@ -150,25 +165,20 @@
         border-radius: 5px;
     }
 
-    .main-section {
-        margin: 48px auto;
+    .portfolio {
+        background-color: white;
+        border-top: 1px solid rgba(217, 217, 217, 0.5);
+        border-bottom: 1px solid rgba(217, 217, 217, 0.5);
     }
 
-    .main-section .item {
-        margin: 25px 0;
+    .portfolio .item {
+        background-color: white;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(217, 217, 217, 0.5);
     }
 
-    .main-section .item:first-child {
-        margin-top: 68px;
-    }
-
-    .main-section .item .subitem {
-        margin: 10px 0;
-    }
-
-    .popover-demo-content {
-
-        padding: 5px 10px;
+    .portfolio .item:last-child {
+        border-bottom: none !important;
     }
 
 </style>
