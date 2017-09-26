@@ -116,6 +116,7 @@
                     api.openWin({
                         name: service.name,
                         url: service.url,
+                        delay:1,
                         pageParam: {
                             name: 'test12'
                         }

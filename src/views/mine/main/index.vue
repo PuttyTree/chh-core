@@ -43,7 +43,7 @@
                                 <badge v-if="item.slot.type === 'badge'" :text="item.slot.text"
                                        class="vertical-middle"></badge>
                             </span>
-                            <span >
+                            <span>
                                 <x-icon type="ios-arrow-forward" size="30"></x-icon>
                             </span>
 
@@ -97,6 +97,7 @@
                     api.openWin({
                             name: item.name,
                             url: item.link,
+                            delay: 1,
                             pageParam: {
                                 name: 'test11'
                             }
@@ -112,6 +113,7 @@
                     api.openWin({
                             name: 'user-info',
                             url: '../user-info/index.html',
+                            delay: 1,
                             pageParam: {
                                 name: 'test11'
                             }
