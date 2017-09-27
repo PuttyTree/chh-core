@@ -38,7 +38,8 @@
         methods: {
             back(){
                 if(window.device){
-                    api.closeWin();
+                    /*api.closeWin();*/
+                    api.closeFrame();
                 }else{
                     this.$router.push({path: '/'});
                 }

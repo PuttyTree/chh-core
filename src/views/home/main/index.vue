@@ -113,10 +113,24 @@
                     return;
                 }
                 if (window.device != null) {
-                    api.openWin({
+                 /*   api.openWin({
                         name: service.name,
                         url: service.url,
-                        delay:1,
+                        delay: 1,
+                        pageParam: {
+                            name: 'test12'
+                        }
+                    });*/
+                    api.openFrame({
+                        name: service.name,
+                        url: service.url,
+                        rect: {
+                            x: 0,
+                            y: 0,
+                            w: 'auto',
+                            h: 'auto'
+                        },
+                        delay: 1,
                         pageParam: {
                             name: 'test12'
                         }

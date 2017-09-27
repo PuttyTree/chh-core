@@ -94,10 +94,27 @@
                  return;
                  }*/
                 if (window.device) {
-                    api.openWin({
+                    /*   api.openWin({
+                     name: item.name,
+                     url: item.link,
+                     delay: 1,
+                     pageParam: {
+                     name: 'test11'
+                     }
+                     }
+                     );*/
+                    api.openFrame({
                             name: item.name,
                             url: item.link,
-                            delay: 1,
+                            rect: {
+                                x: 0,
+                                y: 0,
+                                w: 'auto',
+                                h: 'auto'
+                            },
+                            progress: {
+                                type: "default"
+                            },
                             pageParam: {
                                 name: 'test11'
                             }
@@ -110,10 +127,27 @@
             },
             loginOrRegister(){
                 if (window.device != null) {
-                    api.openWin({
+                    /*    api.openWin({
+                     name: 'user-info',
+                     url: '../user-info/index.html',
+                     delay: 1,
+                     pageParam: {
+                     name: 'test11'
+                     }
+                     }
+                     );*/
+                    api.openFrame({
                             name: 'user-info',
                             url: '../user-info/index.html',
-                            delay: 1,
+                            progress: {
+                                type: "default"
+                            },
+                            rect: {
+                                x: 0,
+                                y: 0,
+                                w: 'auto',
+                                h: 'auto'
+                            },
                             pageParam: {
                                 name: 'test11'
                             }

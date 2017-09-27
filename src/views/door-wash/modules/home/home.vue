@@ -61,7 +61,8 @@
         methods: {
             back(){
                 if (window.device != null) {
-                    api.closeWin();
+                    /*api.closeWin();*/
+                    api.closeFrame();
                 }
             }
         }
@@ -74,12 +75,13 @@
     .door-wash-panel {
         position: relative;
     }
+
     .door-wash-panel .main {
         margin: 58px 0;
     }
 
     .door-wash-panel .main .item {
-       padding: 10px 0;
+        padding: 10px 0;
     }
 
     .main .item:first-child {

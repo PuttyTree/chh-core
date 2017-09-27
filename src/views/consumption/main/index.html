@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title> 我的消费 </title>
+    <script type="text/javascript">
+        window.device = <%= htmlWebpackPlugin.options.metadata.device %>
+    </script>
   </head>
   <body>
     <div id="app">
@@ -13,7 +16,5 @@
   </body>
 
 
-  <script type="text/javascript">
-   window.device = <%= htmlWebpackPlugin.options.metadata.device %>
-  </script>
+
 </html>

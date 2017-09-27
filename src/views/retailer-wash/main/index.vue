@@ -138,7 +138,8 @@
             },
             back(){
                 if (window.device != null) {
-                    api.closeWin();
+                    /*api.closeWin();*/
+                    api.closeFrame();
                 }
             },
             setFocus () {
