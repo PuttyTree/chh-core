@@ -12,7 +12,7 @@ if (window.device) {
             router,
             render: h => h(App)
         }).$mount('#app')
-    }
+    };
 
 } else {
     new Vue({
