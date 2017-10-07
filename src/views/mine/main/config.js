@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/9/24.
  */
-export let SETTINGS = [
+export let PORTFOLIO = [
     {
 
         name: 'consumption',
@@ -26,10 +26,14 @@ export let SETTINGS = [
             text: '成为会员'
         }
     }, {
+        name: 'recommend',
         icon: 'icon-tuijian',
         title: '推荐车汇惠'
     }, {
+        name: 'setting',
         icon: 'icon-artboard7',
-        title: '设置'
+        title: '设置',
+        link: '../setting/index.html'
+
     }
 ];

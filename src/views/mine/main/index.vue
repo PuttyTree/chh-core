@@ -1,6 +1,6 @@
 <template>
     <div id="mine" class="mine-panel ">
-        <header id="header" class="header main-background-color" style="height: 210px !important;">
+        <header id="header" class="main-background-color" style="height: 210px !important;padding-top: 75px;">
             <div class="portrait text-center">
                 <i class="icon iconfont icon-morentouxiang" style="font-size: 80px; background-color: #6bd7ab;"></i>
             </div>
@@ -9,9 +9,10 @@
                 <span>188****2930</span>
                 <i class="icon iconfont icon-bianji" style="font-size: 20px;"></i>
             </div>
-            <div v-else @click="loginOrRegister()">登录/注册</div>
+            <div class="text-center" v-else @click="loginOrRegister()" style="margin-top: 10px;">登录/注册</div>
         </header>
-        <div style="margin-top: 210px;">
+        <!--style="margin-top: 210px;"-->
+        <div>
             <flexbox style="background-color: white;">
                 <flexbox-item style="background-color: white;">
                     <div class="text-center" style="margin: 20px auto;background-color: white;">
@@ -27,7 +28,7 @@
                 </flexbox-item>
             </flexbox>
             <div class="basic-padding portfolio">
-                <flexbox v-for="(item,index) in settings" :key="index"
+                <flexbox v-for="(item,index) in portfolio" :key="index"
                          class="default-margin item"
                 >
                     <flexbox-item>
@@ -37,7 +38,7 @@
                         </div>
                     </flexbox-item>
                     <flexbox-item>
-                        <div class="text-right " style="position: relative;" @click="onCellClick(item)">
+                        <div class="text-right " style="position: relative;" tapmode @click="onCellClick(item)">
                             <span style="position:absolute;top:0;right:28px;height: 30px;line-height:30px;"
                                   v-if='item.slot'>
                                 <badge v-if="item.slot.type === 'badge'" :text="item.slot.text"
@@ -58,7 +59,7 @@
 
 <script>
     import Lib from 'assets/js/Lib';
-    import {SETTINGS} from './config';
+    import {PORTFOLIO} from './config';
     let _ = require('lodash');
     import {
         Badge, Group, Panel, Flexbox, FlexboxItem,
@@ -69,7 +70,7 @@
         data() {
             return {
                 isLogin: false,
-                settings: SETTINGS
+                portfolio: PORTFOLIO
             }
         },
         components: {
@@ -85,7 +86,6 @@
                 }
             },
             onCellClick(item){
-                debugger
                 if (_.isNil(item.link)) {
                     return;
                 }
@@ -94,32 +94,32 @@
                  return;
                  }*/
                 if (window.device) {
-                    /*   api.openWin({
-                     name: item.name,
-                     url: item.link,
-                     delay: 1,
-                     pageParam: {
-                     name: 'test11'
-                     }
-                     }
-                     );*/
-                    api.openFrame({
+                    api.openWin({
                             name: item.name,
                             url: item.link,
-                            rect: {
-                                x: 0,
-                                y: 0,
-                                w: 'auto',
-                                h: 'auto'
-                            },
-                            progress: {
-                                type: "default"
-                            },
+                            delay: 1,
                             pageParam: {
                                 name: 'test11'
                             }
                         }
                     );
+                    /*       api.openFrame({
+                     name: item.name,
+                     url: item.link,
+                     rect: {
+                     x: 0,
+                     y: 0,
+                     w: 'auto',
+                     h: 'auto'
+                     },
+                     progress: {
+                     type: "default"
+                     },
+                     pageParam: {
+                     name: 'test11'
+                     }
+                     }
+                     );*/
                 } else {
                     window.open(item.link, '_blank');
                 }
@@ -127,16 +127,16 @@
             },
             loginOrRegister(){
                 if (window.device != null) {
-                    /*    api.openWin({
-                     name: 'user-info',
-                     url: '../user-info/index.html',
-                     delay: 1,
-                     pageParam: {
-                     name: 'test11'
-                     }
-                     }
-                     );*/
-                    api.openFrame({
+                    api.openWin({
+                            name: 'user-info',
+                            url: '../user-info/index.html',
+                            delay: 1,
+                            pageParam: {
+                                name: 'test11'
+                            }
+                        }
+                    );
+                   /* api.openFrame({
                             name: 'user-info',
                             url: '../user-info/index.html',
                             progress: {
@@ -152,7 +152,7 @@
                                 name: 'test11'
                             }
                         }
-                    );
+                    );*/
                 } else {
                     window.open('../user-info/index.html', '_blank');
                 }
@@ -178,7 +178,8 @@
         line-height: 80px;
         width: 80px;
         margin: 0 auto;
-        margin-top: 75px;
+        /*   margin-top: 75px;*/
+
         padding: 0;
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;

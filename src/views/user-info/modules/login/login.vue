@@ -74,7 +74,6 @@
             if (dom) {
                 dom.style['width'] = '5em';
             }
-            debugger
             let group = this.$refs.group1.$el.querySelector('.weui-cells');
             if (group) {
                 let className = group.getAttribute('class');
