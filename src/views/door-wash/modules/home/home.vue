@@ -1,12 +1,12 @@
 <!--上门洗车-->
 <template>
     <div class="door-wash-panel">
-        <header id="header" class="header panel-bottom" style="background-color: white;">
+      <!--  <header id="header" class="header panel-bottom" style="background-color: white;">
             <span class="back event-back left" @click="back()">
                 <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
             </span>
             <span>上门洗车</span>
-        </header>
+        </header>-->
         <div class="main basic-padding" style="background-color: white;">
             <div class="item panel-bottom">
                 <div class="grey-color subitem">上门时间</div>
@@ -61,8 +61,7 @@
         methods: {
             back(){
                 if (window.device != null) {
-                    /*api.closeWin();*/
-                    api.closeFrame();
+                    api.closeWin();
                 }
             }
         }

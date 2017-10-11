@@ -54,6 +54,10 @@
             </div>
 
         </div>
+
+        <actionsheet v-model="show2" :menus="menus2" @on-click-menu="onClickActionSheet" show-cancel></actionsheet>
+
+
     </div>
 </template>
 
@@ -63,18 +67,23 @@
     let _ = require('lodash');
     import {
         Badge, Group, Panel, Flexbox, FlexboxItem,
-        Rater, LoadMore, XButton, Cell
+        Rater, LoadMore, XButton, Cell, Actionsheet
     } from 'vux'
     export default {
         name: 'app',
         data() {
             return {
                 isLogin: false,
-                portfolio: PORTFOLIO
+                portfolio: PORTFOLIO,
+                show2: false,
+                menus2: {
+                    menu1: 'Take Photo',
+                    menu2: 'Choose from photos'
+                }
             }
         },
         components: {
-            Badge, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, XButton, Cell
+            Badge, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, XButton, Cell, Actionsheet
         },
         mounted(){
         },
@@ -86,23 +95,26 @@
                 }
             },
             onCellClick(item){
-                if (_.isNil(item.link)) {
-                    return;
-                }
-                /*    let substract = Math.abs(window.innerWidth - $event.clientX);
-                 if (substract > 30) {
-                 return;
-                 }*/
-                if (window.device) {
-                    api.openWin({
-                            name: item.name,
-                            url: item.link,
-                            delay: 1,
-                            pageParam: {
-                                name: 'test11'
+                if (item.link) {
+                    if (window.device) {
+                        api.openWin({
+                                name: item.name,
+                                url: item.link,
+                                delay: 1,
+                                pageParam: {
+                                    name: 'test11'
+                                }
                             }
-                        }
-                    );
+                        );
+                    }
+                    else {
+                        window.open(item.link, '_blank');
+                    }
+                    /*    let substract = Math.abs(window.innerWidth - $event.clientX);
+                     if (substract > 30) {
+                     return;
+                     }*/
+
                     /*       api.openFrame({
                      name: item.name,
                      url: item.link,
@@ -120,8 +132,28 @@
                      }
                      }
                      );*/
-                } else {
-                    window.open(item.link, '_blank');
+                } else if (item.frame) {
+                    if (window.device) {
+                        api.openFrame({
+                                name: item.name,
+                                url: item.frame,
+                                rect: {
+                                    x: 0,
+                                    y: 50,
+                                    w: 'auto',
+                                    h: 'auto'
+                                },
+                                bgColor: 'rgba(128, 128, 128)',
+                                pageParam: {
+                                    name: 'test11'
+                                }
+                            }
+                        );
+                    } else {
+                        this.show2 = true;
+                    }
+
+
                 }
 
             },
@@ -136,27 +168,30 @@
                             }
                         }
                     );
-                   /* api.openFrame({
-                            name: 'user-info',
-                            url: '../user-info/index.html',
-                            progress: {
-                                type: "default"
-                            },
-                            rect: {
-                                x: 0,
-                                y: 0,
-                                w: 'auto',
-                                h: 'auto'
-                            },
-                            pageParam: {
-                                name: 'test11'
-                            }
-                        }
-                    );*/
+                    /* api.openFrame({
+                     name: 'user-info',
+                     url: '../user-info/index.html',
+                     progress: {
+                     type: "default"
+                     },
+                     rect: {
+                     x: 0,
+                     y: 0,
+                     w: 'auto',
+                     h: 'auto'
+                     },
+                     pageParam: {
+                     name: 'test11'
+                     }
+                     }
+                     );*/
                 } else {
                     window.open('../user-info/index.html', '_blank');
                 }
-            }
+            },
+            onClickActionSheet (key) {
+
+            },
         }
     }
 </script>

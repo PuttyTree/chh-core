@@ -1,11 +1,11 @@
 <template>
     <div class="violation-panel">
-        <header id="header" class="header panel-bottom">
+      <!--  <header id="header" class="header panel-bottom">
             <span class="back event-back left" @click="back()">
                 <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
             </span>
             <span>违章查询</span>
-        </header>
+        </header>-->
         <div class="main">
             <group label-width="6em" label-margin-right="1em" label-align="left">
                 <x-address title="查询城市" v-model="addressValue" raw-value :list="addressData"
@@ -38,8 +38,7 @@
         methods: {
             back(){
                 if(window.device){
-                    /*api.closeWin();*/
-                    api.closeFrame();
+                    api.closeWin();
                 }else{
                     this.$router.push({path: '/'});
                 }

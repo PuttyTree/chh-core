@@ -113,15 +113,14 @@
                     return;
                 }
                 if (window.device != null) {
-                 /*   api.openWin({
+                    api.openWin({
                         name: service.name,
                         url: service.url,
-                        delay: 1,
                         pageParam: {
                             name: 'test12'
                         }
-                    });*/
-                    api.openFrame({
+                    });
+                   /* api.openFrame({
                         name: service.name,
                         url: service.url,
                         rect: {
@@ -134,7 +133,7 @@
                         pageParam: {
                             name: 'test12'
                         }
-                    });
+                    });*/
                 } else {
                     window.open(service.url, '_blank');
                 }

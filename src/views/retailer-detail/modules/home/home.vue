@@ -9,7 +9,6 @@
             <span class="right">
                 <i class="icon iconfont icon-youhuiquan" style="font-size: 25px;"></i>
                 <i class="icon iconfont icon-fenxiang" style="font-size: 30px;"></i>
-
             </span>
         </header>
         <div>
