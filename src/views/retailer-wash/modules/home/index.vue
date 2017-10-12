@@ -3,9 +3,9 @@
     <div id="home" class="retailer-wash-panel">
 
         <header id="header" class="header" style="background-color: white;">
-            <span class="back left" style="margin-top: -5px;" @click="back()">
-                <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
-            </span>
+        <span class="back left" style="margin-top: -5px;" @click="back()">
+        <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
+        </span>
             <div class="search">
                 <search @on-submit="onSubmit"
                         :auto-fixed="false"
@@ -13,8 +13,8 @@
                         ref="search"></search>
             </div>
             <span class="right" style="margin-top: -5px;">
-                <i class="icon iconfont icon-dingwei1" style="font-size: 30px;"></i>
-            </span>
+        <i class="icon iconfont icon-dingwei1" style="font-size: 30px;"></i>
+        </span>
         </header>
         <div class="propagation">
             <img src="../../assets/retailer-propagation1.png" width="100%" height="90">
@@ -119,6 +119,9 @@
             if (bar) {
                 bar.style['background-color'] = 'transparent';
             }
+            /*  document.querySelector("header .right").addEventListener("click", function () {
+             alert("Hello World");
+             });*/
 
         },
         //相关操作事件
