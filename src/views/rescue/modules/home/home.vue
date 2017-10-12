@@ -6,7 +6,7 @@
                 <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
             </span>
             <span>道路救援</span>
-            <span class="right main-color" style="font-size: 14px;" @click="myRescueLise()">我的救援</span>
+            <span class="right main-color" style="font-size: 14px;" @click="myRescueList()">我的救援</span>
         </header>
         <div class="warning">您的年卡已过期，请重新购买</div>
         <div class="main basic-margin">
@@ -105,7 +105,7 @@
                     this.$router.push({path: '/'});
                 }
             },
-            myRescueLise(){
+            myRescueList(){
                 this.$router.push({name: 'list'});
             }
         }

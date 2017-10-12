@@ -55,7 +55,7 @@
 </head>
 <body>
 <header id="header" class="header" style="background-color: white;">
-      <span class="back left">
+      <span class="back left" tapmode onclick="back()">
           <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
       </span>
     <div class="search">
@@ -73,6 +73,14 @@
 </div>
 <!-- built files will be auto injected -->
 </body>
+<script type="text/javascript">
+    function back() {
+        if (window.device != null) {
+            api.closeWin();
+        }
+    }
+
+</script>
 
 
 </html>
