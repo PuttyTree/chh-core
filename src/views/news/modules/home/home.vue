@@ -1,7 +1,7 @@
 <!--咨询主页-->
 <template>
     <div class="news-panel">
-        <header id="header" class="header panel-bottom">
+        <header id="header" class="header panel-bottom main-background-color">
             <span>咨询</span>
         </header>
         <div class="main">
