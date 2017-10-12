@@ -2,20 +2,20 @@
 <template>
     <div id="home" class="retailer-wash-panel">
 
-        <header id="header" class="header" style="background-color: white;">
-        <span class="back left" style="margin-top: -5px;" @click="back()">
-        <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
-        </span>
-            <div class="search">
-                <search @on-submit="onSubmit"
-                        :auto-fixed="false"
-                        placeholder="输入车行名"
-                        ref="search"></search>
-            </div>
-            <span class="right" style="margin-top: -5px;">
-        <i class="icon iconfont icon-dingwei1" style="font-size: 30px;"></i>
-        </span>
-        </header>
+        <!--        <header id="header" class="header" style="background-color: white;">
+                <span class="back left" style="margin-top: -5px;" @click="back()">
+                <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
+                </span>
+                    <div class="search">
+                        <search @on-submit="onSubmit"
+                                :auto-fixed="false"
+                                placeholder="输入车行名"
+                                ref="search"></search>
+                    </div>
+                    <span class="right" style="margin-top: -5px;">
+                <i class="icon iconfont icon-dingwei1" style="font-size: 30px;"></i>
+                </span>
+                </header>-->
         <div class="propagation">
             <img src="../../assets/retailer-propagation1.png" width="100%" height="90">
         </div>
@@ -110,22 +110,32 @@
         },
         mounted(){
             //去掉“取消”按钮
-            let cancelBtn = this.$refs.search.$el.querySelector('.weui-search-bar__cancel-btn');
-            if (cancelBtn) {
-                cancelBtn.style['display'] = 'none';
-            }
-            //隐藏背景
-            let bar = this.$refs.search.$el.querySelector('.weui-search-bar');
-            if (bar) {
-                bar.style['background-color'] = 'transparent';
-            }
-            /*  document.querySelector("header .right").addEventListener("click", function () {
-             alert("Hello World");
-             });*/
+            /*     let cancelBtn = this.$refs.search.$el.querySelector('.weui-search-bar__cancel-btn');
+             if (cancelBtn) {
+             cancelBtn.style['display'] = 'none';
+             }
+             //隐藏背景
+             let bar = this.$refs.search.$el.querySelector('.weui-search-bar');
+             if (bar) {
+             bar.style['background-color'] = 'transparent';
+             }*/
+            this.initHeaderPanel();
 
         },
         //相关操作事件
         methods: {
+            initHeaderPanel(){
+                document.querySelector("header .right").addEventListener("click", function () {
+                    alert("Hello World");
+                });
+
+                document.querySelector('header .search .content').addEventListener('input', this.onSearchContentChange);
+                document.querySelector('header .search .content').addEventListener('change', this.onSearchContentChange);
+
+                document.querySelector('header .search .icon-tubiao17').addEventListener('click', this.onSearch);
+                document.querySelector('header .search .icon-qingchu').addEventListener('click', this.onClearSearch);
+                document.querySelector('header .search .icon-qingchu').style.visibility = "hidden";
+            },
             onClickDetail(item){
                 if (window.device != null) {
                     api.openWin({
@@ -166,7 +176,28 @@
             },
             onCancel () {
                 console.log('on cancel')
+            },
+            //设置清除按钮是否可见
+            onSearchContentChange(){
+                let value = document.querySelector('header .search .content').value;
+                if (value == null || value.trim().length < 1) {
+                    document.querySelector('header .search .icon-qingchu').style.visibility = "hidden";
+                } else {
+                    document.querySelector('header .search .icon-qingchu').style.visibility = "visible";
+                }
+
+            },
+            //搜索按钮
+            onSearch(){
+                let value = document.querySelector('header .search .content').value;
+                alert(value);
+            },
+            //清除按钮
+            onClearSearch(){
+                document.querySelector('header .search .content').value = '';
+                document.querySelector('header .search .icon-qingchu').style.visibility = "hidden";
             }
+
         }
     }
 </script>
