@@ -1,11 +1,14 @@
 <template>
     <div class="violation-panel">
-      <!--  <header id="header" class="header panel-bottom">
-            <span class="back event-back left" @click="back()">
-                <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
-            </span>
-            <span>违章查询</span>
-        </header>-->
+        <!--  <header id="header" class="header panel-bottom">
+              <span class="back event-back left" @click="back()">
+                  <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
+              </span>
+              <span>违章查询</span>
+          </header>-->
+        <div class="progress">
+            <x-progress :percent="percent" :show-cancel="false" v-if="percent<100"></x-progress>
+        </div>
         <div class="main">
             <group label-width="6em" label-margin-right="1em" label-align="left">
                 <x-address title="查询城市" v-model="addressValue" raw-value :list="addressData"
@@ -22,24 +25,43 @@
 </template>
 <script>
     import Lib from 'assets/js/Lib';
-    import {Group, ChinaAddressData, Cell, XButton, XInput, XNumber, Datetime, Selector, XAddress, XTextarea} from 'vux'
+    import {
+        Group,
+        ChinaAddressData,
+        Cell,
+        XButton,
+        XInput,
+        XNumber,
+        Datetime,
+        Selector,
+        XAddress,
+        XProgress,
+        XTextarea
+    } from 'vux';
     export default{
         data(){
             return {
                 addressData: ChinaAddressData,
-                addressValue: ['广东省', '深圳市', '南山区'],
+                addressValue: ['重庆市', '市辖区', '江北区'],
                 value3: '',
-                value4: ''
+                value4: '',
+                percent: 20,
             }
         },
         components: {
-            Group, Cell, XButton, XInput, XNumber, XAddress
+            Group, Cell, XButton, XInput, XNumber, XAddress, XProgress
+        },
+        created(){
+            this.percent = 50;
+        },
+        mounted(){
+//            this.percent = 100;
         },
         methods: {
             back(){
-                if(window.device){
+                if (window.device) {
                     api.closeWin();
-                }else{
+                } else {
                     this.$router.push({path: '/'});
                 }
             }

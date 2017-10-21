@@ -576,7 +576,10 @@ input, textarea {
     height: 48px;
     line-height: 48px;
 }
-
+.progress{
+    position: relative;
+    margin-top: 49px;
+}
 .main-panel {
     position: relative;
     margin-top: 50px;

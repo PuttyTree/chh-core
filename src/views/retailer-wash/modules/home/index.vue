@@ -1,7 +1,6 @@
 <!--门店洗车-车行列表-->
 <template>
     <div id="home" class="retailer-wash-panel">
-
         <!--        <header id="header" class="header" style="background-color: white;">
                 <span class="back left" style="margin-top: -5px;" @click="back()">
                 <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
@@ -16,6 +15,9 @@
                 <i class="icon iconfont icon-dingwei1" style="font-size: 30px;"></i>
                 </span>
                 </header>-->
+        <div class="progress">
+            <x-progress :percent="percent" :show-cancel="false" v-if="percent<100"></x-progress>
+        </div>
         <div class="propagation">
             <img src="../../assets/retailer-propagation1.png" width="100%" height="90">
         </div>
@@ -62,20 +64,20 @@
 
         </div>
         <load-more :show-loading="false" :tip="'没有更多商家了'" background-color="#fbf9fe"></load-more>
-
     </div>
 </template>
 
 <script>
 
     import Lib from 'assets/js/Lib';
-    import {Search, Group, Panel, Flexbox, FlexboxItem, Rater, LoadMore} from 'vux'
+    import {Search, Group, Panel, Flexbox, FlexboxItem, Rater, LoadMore, XProgress} from 'vux'
 
     export default {
         data() {
             return {
                 results: [],
                 data3: 5,
+                percent: 20,
                 retailerList: [
                     {
                         name: '西郊汽车服务连锁(光电园站)',
@@ -106,9 +108,14 @@
             }
         },
         components: {
-            Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore
+            Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, XProgress
+        },
+        created(){
+            this.percent = 50;
         },
         mounted(){
+
+
             //去掉“取消”按钮
             /*     let cancelBtn = this.$refs.search.$el.querySelector('.weui-search-bar__cancel-btn');
              if (cancelBtn) {
@@ -120,6 +127,7 @@
              bar.style['background-color'] = 'transparent';
              }*/
             this.initHeaderPanel();
+            this.percent = 90;
 
         },
         //相关操作事件
@@ -222,7 +230,7 @@
     }
 
     .propagation {
-        margin-top: 58px;
+        margin-top: 8px;
         height: 90px;
     }
 
