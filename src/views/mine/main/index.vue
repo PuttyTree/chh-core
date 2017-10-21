@@ -120,21 +120,6 @@
                             alert(index);
                         });
 
-                        /* api.openFrame({
-                         name: item.name,
-                         url: item.frame,
-                         rect: {
-                         x: 0,
-                         y: 50,
-                         w: 'auto',
-                         h: 'auto'
-                         },
-                         bgColor: 'rgba(128, 128, 128)',
-                         pageParam: {
-                         name: 'test11'
-                         }
-                         }
-                         );*/
                     } else {
                         this.show2 = true;
                     }
