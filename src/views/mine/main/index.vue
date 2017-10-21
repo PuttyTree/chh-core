@@ -57,7 +57,6 @@
 
         <actionsheet v-model="show2" :menus="menus2" @on-click-menu="onClickActionSheet" show-cancel></actionsheet>
 
-
     </div>
 </template>
 
@@ -77,8 +76,8 @@
                 portfolio: PORTFOLIO,
                 show2: false,
                 menus2: {
-                    menu1: 'Take Photo',
-                    menu2: 'Choose from photos'
+                    menu1: '微信',
+                    menu2: '微信朋友圈'
                 }
             }
         },
@@ -110,45 +109,32 @@
                     else {
                         window.open(item.link, '_blank');
                     }
-                    /*    let substract = Math.abs(window.innerWidth - $event.clientX);
-                     if (substract > 30) {
-                     return;
-                     }*/
-
-                    /*       api.openFrame({
-                     name: item.name,
-                     url: item.link,
-                     rect: {
-                     x: 0,
-                     y: 0,
-                     w: 'auto',
-                     h: 'auto'
-                     },
-                     progress: {
-                     type: "default"
-                     },
-                     pageParam: {
-                     name: 'test11'
-                     }
-                     }
-                     );*/
-                } else if (item.frame) {
+                } else if (item.actionSheet) {
                     if (window.device) {
-                        api.openFrame({
-                                name: item.name,
-                                url: item.frame,
-                                rect: {
-                                    x: 0,
-                                    y: 50,
-                                    w: 'auto',
-                                    h: 'auto'
-                                },
-                                bgColor: 'rgba(128, 128, 128)',
-                                pageParam: {
-                                    name: 'test11'
-                                }
-                            }
-                        );
+                        api.actionSheet({
+                            title: '选择要分享的平台',
+                            cancelTitle: '取消',
+                            buttons: ['微信', '微信朋友圈']
+                        }, function (ret, err) {
+                            let index = ret.buttonIndex;
+                            alert(index);
+                        });
+
+                        /* api.openFrame({
+                         name: item.name,
+                         url: item.frame,
+                         rect: {
+                         x: 0,
+                         y: 50,
+                         w: 'auto',
+                         h: 'auto'
+                         },
+                         bgColor: 'rgba(128, 128, 128)',
+                         pageParam: {
+                         name: 'test11'
+                         }
+                         }
+                         );*/
                     } else {
                         this.show2 = true;
                     }
@@ -168,29 +154,11 @@
                             }
                         }
                     );
-                    /* api.openFrame({
-                     name: 'user-info',
-                     url: '../user-info/index.html',
-                     progress: {
-                     type: "default"
-                     },
-                     rect: {
-                     x: 0,
-                     y: 0,
-                     w: 'auto',
-                     h: 'auto'
-                     },
-                     pageParam: {
-                     name: 'test11'
-                     }
-                     }
-                     );*/
                 } else {
                     window.open('../user-info/index.html', '_blank');
                 }
             },
             onClickActionSheet (key) {
-
             },
         }
     }

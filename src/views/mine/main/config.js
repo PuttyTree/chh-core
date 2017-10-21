@@ -29,6 +29,7 @@ export let PORTFOLIO = [
         name: 'recommend',
         icon: 'icon-tuijian',
         title: '推荐车汇惠',
+        actionSheet: true
     }, {
         name: 'setting',
         icon: 'icon-artboard7',
