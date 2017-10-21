@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <title> 违章查询 </title>
+    <script type="text/javascript">
+        window.device = <%= htmlWebpackPlugin.options.metadata.device %>
+    </script>
+</head>
+<body>
+<header id="header" class="header panel-bottom">
+   <span class="back event-back left" tapmode onclick="back()">
+        <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
+   </span>
+    <div>违章查询</div>
+</header>
+<div id="app">
+
+</div>
+<!-- built files will be auto injected -->
+</body>
+<script type="text/javascript">
+    function back() {
+        if (window.device != null) {
+            api.closeWin();
+        }
+    }
+
+</script>
+
+</html>
