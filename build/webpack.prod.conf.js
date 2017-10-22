@@ -130,7 +130,7 @@ if (config.build.bundleAnalyzerReport) {
 const METADATA = {
     title: "chh",
     version: "1.0",
-    device: "'pc'"
+    device: "'app'"
 };
 
 //构建生成多页面的HtmlWebpackPlugin配置，主要是循环生成
