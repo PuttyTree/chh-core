@@ -145,7 +145,7 @@
                 document.querySelector('header .search .icon-qingchu').style.visibility = "hidden";
             },
             onClickDetail(item){
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.openWin({
                         name: 'retailer-detail',
                         url: '../retailer-detail/index.html',
@@ -158,7 +158,7 @@
                 }
             },
             back(){
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.closeWin();
                 }
             },

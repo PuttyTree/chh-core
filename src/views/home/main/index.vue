@@ -112,7 +112,7 @@
                 if (_.isNil(service) || _.isNil(service.url)) {
                     return;
                 }
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.openWin({
                         name: service.name,
                         url: service.url,
@@ -140,7 +140,7 @@
 
             },
             test(){
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.openWin({
                         name: 'page1',
                         url: '../apicloud/index.html',

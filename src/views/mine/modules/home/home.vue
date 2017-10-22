@@ -100,7 +100,7 @@
         //相关操作事件
         methods: {
             back(){
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.closeWin();
                 }
             },

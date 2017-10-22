@@ -37,7 +37,7 @@ module.exports = merge(baseWebpackConfig, {
 const METADATA = {
     title: "chh",
     version: "1.0",
-    device: ""
+    device: "'pc'"
 };
 
 

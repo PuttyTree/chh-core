@@ -47,7 +47,7 @@
                 if (_.isNil(item.link)) {
                     return;
                 }
-                if (window.device) {
+                if (window.device === 'app') {
                     api.openWin({
                             name: item.name,
                             url: item.link,

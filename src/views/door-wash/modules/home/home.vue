@@ -67,7 +67,7 @@
                 document.querySelector('header #title').innerHTML = '上门洗车';
             },
             back(){
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.closeWin();
                 }
             },

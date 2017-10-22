@@ -4,7 +4,7 @@ import router from './router';
 
 /**/
 
-if (window.device) {
+if (window.device === 'app') {
     window.apiready = function () {
         new Vue({
             router,

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './index.vue'
 
-if (window.device) {
+if (window.device === 'app') {
     window.apiready = function () {
         new Vue({
             render: h => h(App)

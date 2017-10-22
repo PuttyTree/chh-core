@@ -89,13 +89,13 @@
         //相关操作事件
         methods: {
             back(){
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.closeWin();
                 }
             },
             onCellClick(item){
                 if (item.link) {
-                    if (window.device) {
+                    if (window.device === 'app') {
                         api.openWin({
                                 name: item.name,
                                 url: item.link,
@@ -110,7 +110,7 @@
                         window.open(item.link, '_blank');
                     }
                 } else if (item.actionSheet) {
-                    if (window.device) {
+                    if (window.device === 'app') {
                         api.actionSheet({
                             title: '选择要分享的平台',
                             cancelTitle: '取消',
@@ -129,7 +129,7 @@
 
             },
             loginOrRegister(){
-                if (window.device != null) {
+                if (window.device === 'app') {
                     api.openWin({
                             name: 'user-info',
                             url: '../user-info/index.html',

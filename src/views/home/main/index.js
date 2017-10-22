@@ -7,7 +7,7 @@ import App from './index.vue'
  }).$mount('#app')
  */
 
-if (window.device) {
+if (window.device === 'app') {
     window.apiready = function () {
         new Vue({
             render: h => h(App)

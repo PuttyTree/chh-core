@@ -7,7 +7,7 @@ import router from './router';
  render: h => h(App)
  }).$mount('#app')
  */
-if (window.device) {
+if (window.device === 'app') {
     window.apiready = function () {
         new Vue({
             router,

@@ -23,7 +23,7 @@
 </body>
 <script type="text/javascript">
     function back() {
-        if (window.device != null) {
+        if (window.device === 'app') {
             if (window.location.hash === '#' || window.location.hash === '#/') {
                 api.closeWin();
             } else {

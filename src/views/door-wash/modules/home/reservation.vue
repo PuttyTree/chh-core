@@ -22,7 +22,7 @@
         },
         mounted(){
             this.initHeaderPanel();
-            if (window.device) {
+            if (window.device === 'app') {
                 this.map = api.require('bMap');
                 this.openMap();
             }

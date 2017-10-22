@@ -58,7 +58,7 @@
         components: {XButton, Panel, CheckIcon},
         methods: {
             back(){
-                if (window.device) {
+                if (window.device === 'app') {
                     api.closeWin();
                 } else {
                     this.$router.push({path: '/'});
