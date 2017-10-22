@@ -1,12 +1,12 @@
 <!--上门洗车-->
 <template>
     <div class="door-wash-panel">
-      <!--  <header id="header" class="header panel-bottom" style="background-color: white;">
-            <span class="back event-back left" @click="back()">
-                <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
-            </span>
-            <span>上门洗车</span>
-        </header>-->
+        <!--  <header id="header" class="header panel-bottom" style="background-color: white;">
+              <span class="back event-back left" @click="back()">
+                  <i class="icon iconfont icon-back" style="font-size: 20px;"></i>
+              </span>
+              <span>上门洗车</span>
+          </header>-->
         <div class="main basic-padding" style="background-color: white;">
             <div class="item panel-bottom">
                 <div class="grey-color subitem">上门时间</div>
@@ -31,7 +31,10 @@
         </div>
         <footer class="footer">
             <div class="basic-margin">
-                <x-button type="primary" class="main-background-color">确认预约</x-button>
+                <x-button type="primary" class="main-background-color" tapmode @click.native="confirmReserve()">确认预约
+
+
+                </x-button>
             </div>
 
         </footer>
@@ -45,7 +48,7 @@
     import {
         Search, Group, Panel, Flexbox, FlexboxItem,
         Rater, LoadMore, XButton, Cell
-    } from 'vux'
+    } from 'vux';
 
     export default {
         data() {
@@ -55,14 +58,22 @@
             Search, Flexbox, FlexboxItem, Group, Panel, Rater, LoadMore, XButton, Cell
         },
         mounted(){
-
+            this.initHeaderPanel();
         },
         //相关操作事件
         methods: {
+            initHeaderPanel(){
+
+                document.querySelector('header #title').innerHTML = '上门洗车';
+            },
             back(){
                 if (window.device != null) {
                     api.closeWin();
                 }
+            },
+            confirmReserve(){
+                this.$router.push({path: 'reservation'});
+
             }
         }
     }

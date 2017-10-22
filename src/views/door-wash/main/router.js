@@ -7,12 +7,18 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import Home from "../modules/home/home";
+import Reservation from '../modules/home/reservation';
 
 const routes = [
     {
         path: '/',
         name: 'home',
         component: Home
+     },
+    {
+        path: '/reservation',
+        name: 'reservation',
+        component: Reservation
     }
 ];
 
