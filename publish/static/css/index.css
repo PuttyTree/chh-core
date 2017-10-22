@@ -1,0 +1,1 @@
+.header{text-align:center;position:fixed;z-index:1;left:0;right:0;top:0;width:100%;font-size:18px;background-color:#fff}.header,.header .left{height:48px;line-height:48px}.header .left{left:15px}.header .left,.header .middle,.header .right{position:absolute}.header .right{top:0;right:15px;height:48px;line-height:48px}.panel-bottom-border{border-bottom:1px solid #d9d9d9}
