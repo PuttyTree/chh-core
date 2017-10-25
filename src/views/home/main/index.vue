@@ -109,6 +109,29 @@
 
             },
             openService(service){
+                if (service.name === 'retailer-wash') {
+                    this.restApi.testGet()
+                        .then(res => {
+                            if (res && res.data) {
+                                alert({msg: JSON.stringify(res.data.rows)});
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                } else {
+                    this.restApi.testPost({
+                        "pageNo": 1,
+                        "pageSize": 10,
+                        "userName": "zhangsan"
+                    }).then(res => {
+                        alert({msg: JSON.stringify(res)});
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                }
+            },
+            openService1(service){
                 if (_.isNil(service) || _.isNil(service.url)) {
                     return;
                 }
@@ -120,37 +143,12 @@
                             name: 'test12'
                         }
                     });
-                   /* api.openFrame({
-                        name: service.name,
-                        url: service.url,
-                        rect: {
-                            x: 0,
-                            y: 0,
-                            w: 'auto',
-                            h: 'auto'
-                        },
-                        delay: 1,
-                        pageParam: {
-                            name: 'test12'
-                        }
-                    });*/
                 } else {
                     window.open(service.url, '_blank');
                 }
 
             },
-            test(){
-                if (window.device === 'app') {
-                    api.openWin({
-                        name: 'page1',
-                        url: '../apicloud/index.html',
-                        pageParam: {
-                            name: 'test'
-                        }
-                    });
-                }
-
-
+            onImgError(){
             }
         }
     }
