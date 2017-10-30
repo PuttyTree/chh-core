@@ -32,7 +32,7 @@
         </div>
         <footer class="footer text-center ">
             <div class="basic-margin">
-                <x-button type="primary" class="main-background-color">添加车辆</x-button>
+                <x-button type="primary" class="main-background-color" @click.native="addCar()">添加车辆</x-button>
             </div>
         </footer>
     </div>
@@ -61,11 +61,36 @@
         components: {XButton, Panel, CheckIcon},
         methods: {
             back(){
-                if(window.device === 'app'){
+                if (window.device === 'app') {
                     api.closeWin();
-                }else{
+                } else {
                     this.$router.push({path: '/'});
                 }
+            },
+            addCar(){
+                let UIListSearch = api.require('UIListSearch');
+                UIListSearch.open({
+                    rect: {
+                        x: 0,
+                        y: 0,
+                        w: api.winWidth,
+                        h: api.frameHeight
+                    },
+                    contacts:[{
+                        "remark": "张三",
+                        "position": "工程师",
+                        "dept_name": "研发部"
+                    },{
+                        "remark": "李四",
+                        "position": "销售经理",
+                        "dept_name": "销售部"
+                    }],
+                    fixedOn: api.frameName
+                }, function(ret, err) {
+                    if (ret) {
+                        alert(JSON.stringify(ret));
+                    }
+                });
             }
         }
 
